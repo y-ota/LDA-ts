@@ -1,7 +1,7 @@
 # LDA-ts
 
-> A TypeScript implementation of Topic modeing(LDA:Latent Dirichlet Allocation).
-> You can run on your browser with serverless.
+A TypeScript implementation of Topic modeing (LDA: Latent Dirichlet Allocation).
+You can run on your browser with serverless.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
