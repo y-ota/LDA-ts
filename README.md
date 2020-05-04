@@ -20,7 +20,9 @@ console.log(model);
 ```
 
 # API
-## LDA#constructor
+## LDA.ts
+
+### constructor
 
 |  Parameter  |  Explain  | Default value |
 | ---- | ---- | ---- |
@@ -29,11 +31,31 @@ console.log(model);
 |  `beta`  |  Hyper parameteter Beta  | `0.1` |
 |  `nIter`  |  Number of sampling iterations  | `10` |
 
-## LDA#fit
+### fit(X): Model
 
 |  Parameter  |  Explain  |
 | ---- | ---- | 
 |  `X`  |  All documentations (ex: Bang of Words)  |
 
+## Model.ts
+
+|  Parameter  |  Explain  |
+| ---- | ---- |
+|  `W`  |  All documentations  |
+|  `D`  |  Number of documentations  |
+|  `V`  |  Number of vocabulary  |
+|  `K`  |  Number of topics  |
+|  `alpha`  |  Hyper parameter Alpha  |
+|  `beta`  |  Hyper parameter Beta  |
+|  `iters`  |  Number of the Gibbs Sampling iteration  |
+|  `theta`  |  Estimated topic distributions  |
+|  `phi`  |  Estimated word distributions |
+|  `z`  | Assigned topics for word (D * V)  |
+|  `nkw`  | Number of words assinged to topic (V * K)  |
+|  `ndk`  | Number of words assigned to topic in document (D * K)  |
+|  `nk`  | Number of topics in all documents (1 * K)  |
+|  `nd`  | Number of worts in document (1 * D)  |
+
+  
 # License
 © 2020 Yusuke Ota [MIT Lincense]()
