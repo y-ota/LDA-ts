@@ -11,8 +11,16 @@ You can run on your browser with serverless.
 npm install @y-ota/lda-ts@1.0.0-alpha
 ```
 
+or 
+
+```
+git clone https://github.com/y-ota/LDA-ts.git
+```
+
 # Usage
 ``` typescript
+import { LDA } from "@/topicmodeling/lda";
+
 const X = [[1,0,0,1,0,1],[,1,1,1,0,1],[1,1,1,1,0,1],...] // ex: Bag of words
 const lda = new LDA();
 const model = lda.fit(X);
