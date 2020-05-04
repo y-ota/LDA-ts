@@ -1,7 +1,7 @@
 # LDA-ts
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-A TypeScriot implimentation of Topic modeing(LDA:Latent Dirichlet Allocation).
+A TypeScript implementation of Topic modeing(LDA:Latent Dirichlet Allocation).
 
 You can run on your browser with serverless.
 
