@@ -20,11 +20,11 @@ console.log(model);
 ```
 
 # API
-## LDA.ts
+## LDA class
 
 ### constructor
 
-|  Parameter  |  Explain  | Default value |
+|  Arguments  |  Explain  | Default value |
 | ---- | ---- | ---- |
 |  `K`  |  Number of topics  | `10` |
 |  `alpha`  |  Hyper parameteter Alpha  | `0.5` |
@@ -33,13 +33,11 @@ console.log(model);
 
 ### fit(X): Model
 
-|  Parameter  |  Explain  |
+|  Input  |  Explain  |
 | ---- | ---- | 
 |  `X`  |  All documentations (ex: Bang of Words)  |
 
-## Model.ts
-
-|  Parameter  |  Explain  |
+|  Output  |  Explain  |
 | ---- | ---- |
 |  `W`  |  All documentations  |
 |  `D`  |  Number of documentations  |
