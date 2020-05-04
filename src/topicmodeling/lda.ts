@@ -55,14 +55,13 @@ export class LDA {
       alpha: this.alpha,
       beta: this.beta,
       W: W,
-      iters: this.nIter,
+      nIter: this.nIter,
       ndk: ndk,
       nd: nd,
       nkw: nkw,
       nk: nk,
       phi: phi,
       theta: theta,
-      perplexity: 0,
       z: z
     };
     return model;
@@ -103,7 +102,7 @@ export class LDA {
    */
   public fit(W: number[][]): Model {
     const model = this.createInitialModel(W);
-    for (let i = 0; i < model.iters; i++) {
+    for (let i = 0; i < model.nIter; i++) {
       for (let d = 0; d < model.D; d++) {
         for (let n = 0; n < model.W[d].length; n++) {
           const topic = model.z[d][n];

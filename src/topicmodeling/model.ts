@@ -35,7 +35,7 @@ export interface Model {
   /**
    * Number of the Gibbs Sampling iteration
    */
-  iters: number;
+  nIter: number;
 
   /**
    * Estimated topic distributions, Theta
@@ -71,9 +71,4 @@ export interface Model {
    * Number of worts in document (1 * D)
    */
   nd: number[];
-
-  /**
-   * perplexity
-   */
-  perplexity: number;
 }

@@ -6,7 +6,7 @@
     "build": "vue-cli-service build",
     "test": "jest",
     "test:coverage": "jest --coverage --verbose --silent",
-    "lint": "eslint src/* --fix"
+    "lint": "eslint src/** --fix"
   },
   "dependencies": {
     "core-js": "^3.6.4",

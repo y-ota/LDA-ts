@@ -10,6 +10,7 @@ describe("LDA", () => {
     ];
     const lda = new LDA();
     const model = lda.fit(X);
+    console.log(model);
     // Theta
     expect(model.theta[0].reduce((p, c) => p + c)).toBe(1);
     // Phi
