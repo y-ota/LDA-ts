@@ -57,7 +57,7 @@ console.log(model);
 # API
 ## LDA class
 
-### constructor
+### `constructor`
 
 |  Property  |  Explain  | Default value |
 | ---- | ---- | ---- |
@@ -66,14 +66,14 @@ console.log(model);
 |  `beta`  |  Hyper parameteter Beta  | `0.1` |
 |  `nIter`  |  Number of sampling iterations  | `10` |
 
-### fit method
+### `fit` method
 
-#### Input
+#### Arguments
 |  Property  |  Explain  |
 | ---- | ---- | 
 |  `X`  |  All documentations (ex: Bang of Words)  |
 
-#### Output
+#### Retruns
 |  Property  |  Explain  |
 | ---- | ---- |
 |  `W`  |  All documentations  |
