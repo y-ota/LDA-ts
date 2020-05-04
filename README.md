@@ -100,4 +100,4 @@ console.log(model);
 
   
 # License
-© 2020 Yusuke Ota [MIT Lincense]()
+© 2020 Yusuke Ota, LDA-ts released under the MIT license [MIT Lincense]()
