@@ -61,7 +61,7 @@ console.log(model);
 
 #### Arguments
 
-|  Property  |  Explain  | Default value |
+|  Property  |  Explanation  | Default value |
 | ---- | ---- | ---- |
 |  `K`  |  Number of topics  | `10` |
 |  `alpha`  |  Hyper parameteter Alpha  | `0.5` |
@@ -71,12 +71,12 @@ console.log(model);
 ### `fit`
 
 #### Arguments
-|  Property  |  Explain  |
+|  Property  |  Explanation  |
 | ---- | ---- | 
 |  `X`  |  All documentations (ex: Bang of Words)  |
 
 #### Retruns
-|  Property  |  Explain  |
+|  Property  |  Explanation  |
 | ---- | ---- |
 |  `W`  |  All documentations  |
 |  `D`  |  Number of documentations  |
