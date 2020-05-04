@@ -30,7 +30,7 @@ console.log(model);
 ## LDA#fit
 
 |  Parameter  |  Explain  |
-| ---- | ---- | ---- | 
+| ---- | ---- | 
 |  `X`  |  All documentations (ex: Bang of Words)  |
 
 # License
