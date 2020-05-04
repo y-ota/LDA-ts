@@ -24,7 +24,7 @@ console.log(model);
 
 ### constructor
 
-|  Arguments  |  Explain  | Default value |
+|  Property  |  Explain  | Default value |
 | ---- | ---- | ---- |
 |  `K`  |  Number of topics  | `10` |
 |  `alpha`  |  Hyper parameteter Alpha  | `0.5` |
@@ -33,11 +33,13 @@ console.log(model);
 
 ### fit
 
-|  Input  |  Explain  |
+#### Input
+|  Property  |  Explain  |
 | ---- | ---- | 
 |  `X`  |  All documentations (ex: Bang of Words)  |
 
-|  Output  |  Explain  |
+#### Output
+|  Property  |  Explain  |
 | ---- | ---- |
 |  `W`  |  All documentations  |
 |  `D`  |  Number of documentations  |
