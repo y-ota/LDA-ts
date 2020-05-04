@@ -55,7 +55,7 @@ console.log(model);
 
 
 # API
-## LDA class
+## `LDA`
 
 ### `constructor`
 
@@ -80,7 +80,7 @@ console.log(model);
 | ---- | ---- | 
 |  `Model`  |  Estimated model  |
 
-### `Model`
+## `Model`
 |  Property  |  Explanation  |
 | ---- | ---- |
 |  `W`  |  All documentations  |
