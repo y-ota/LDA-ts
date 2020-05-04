@@ -26,6 +26,9 @@ const lda = new LDA();
 const model = lda.fit(X);
 console.log(model);
 ```
+
+Output of `console.log(model);`
+
 ```
  {
      D: 4,
