@@ -82,7 +82,7 @@ console.log(model);
 |  `K`  |  Number of topics  |
 |  `alpha`  |  Hyper parameter Alpha  |
 |  `beta`  |  Hyper parameter Beta  |
-|  `iters`  |  Number of the Gibbs Sampling iteration  |
+|  `iters`  |  Number of the Gibbs Sampling iterations  |
 |  `theta`  |  Estimated topic distributions  |
 |  `phi`  |  Estimated word distributions |
 |  `z`  | Assigned topics for word (D * V)  |
