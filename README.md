@@ -66,7 +66,7 @@ console.log(model);
 |  `K`  |  Number of topics  | `10` |
 |  `alpha`  |  Hyper parameteter Alpha  | `0.5` |
 |  `beta`  |  Hyper parameteter Beta  | `0.1` |
-|  `nIter`  |  Number of sampling iterations  | `10` |
+|  `nIter`  |  Number of the Gibbs Sampling iterations  | `10` |
 
 ### `fit`
 
