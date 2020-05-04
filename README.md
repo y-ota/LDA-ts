@@ -21,7 +21,7 @@ console.log(model);
 ## LDA#constructor
 
 |  Parameter  |  Explain  | Default value |
-| ---- | ---- |
+| ---- | ---- | ---- |
 |  `K`  |  Number of topics  | `10` |
 |  `alpha`  |  Hyper parameteter Alpha  | `0.5` |
 |  `beta`  |  Hyper parameteter Beta  | `0.1` |
@@ -30,7 +30,7 @@ console.log(model);
 ### LDA#fit
 
 |  Parameter  |  Explain  | Default value |
-| ---- | ---- |
+| ---- | ---- | ---- | 
 |  `X`  |  All documentations (ex: Bang of Words)  | `null` |
 
 # License
