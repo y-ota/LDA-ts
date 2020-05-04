@@ -59,6 +59,8 @@ console.log(model);
 
 ### `constructor`
 
+#### Arguments
+
 |  Property  |  Explain  | Default value |
 | ---- | ---- | ---- |
 |  `K`  |  Number of topics  | `10` |
@@ -66,7 +68,7 @@ console.log(model);
 |  `beta`  |  Hyper parameteter Beta  | `0.1` |
 |  `nIter`  |  Number of sampling iterations  | `10` |
 
-### `fit` method
+### `fit`
 
 #### Arguments
 |  Property  |  Explain  |
