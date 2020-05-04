@@ -1,45 +1,57 @@
 import { Model } from "./model";
 
 /**
- * LDA Estimater
+ * Topic modeling (LDA:Latent Dirichlet Allocation)
+ * Estimation method: Gibbs sampling
  */
-export class Estimater {
+export class LDA {
   /**
-   * Model
+   * constructor
+   * @param K Number of topics
+   * @param alpha Hyper parameteter Alpha
+   * @param beta Hyper parameteter Beta
+   * @param nIter Number of sampling iterations
    */
-  private model: Model;
+  constructor(
+    private K = 10,
+    private alpha = 0.5,
+    private beta = 0.1,
+    private nIter = 10
+  ) { }
 
-  constructor(W: number[][], K = 2, alpha = 0.5, beta = 0.1) {
-    // Initialize
+  private createInitialModel(W: number[][]): Model {
+    // Initialize Model
     const D = W.length;
     const V = W[0].length;
-    const nkw: number[][] = this.createTwoDementionArray(V, K);
-    const ndk: number[][] = this.createTwoDementionArray(D, K);
-    const nk = this.createOneDementionArray(K);
-    const nd = this.createOneDementionArray(D);
-    const theta: number[][] = this.createTwoDementionArray(D, K);
-    const phi: number[][] = this.createTwoDementionArray(K, V);
-    const z = this.createTwoDementionArray(D, V);
+    const nkw: number[][] = this.createMatrix(V, this.K);
+    const ndk: number[][] = this.createMatrix(D, this.K);
+    const nk = this.createVector(this.K);
+    const nd = this.createVector(D);
+    const theta: number[][] = this.createMatrix(D, this.K);
+    const phi: number[][] = this.createMatrix(this.K, V);
+    const z = this.createMatrix(D, V);
 
+    // Set default values
     for (let d = 0; d < D; d++) {
       const N = W[d].length;
       for (let n = 0; n < N; n++) {
-        const topic = Math.floor(Math.random() * K);
-        nkw[W[d][n]][topic] = nkw[W[d][n]][topic] + 1;
+        const topic = Math.floor(Math.random() * this.K);
+        const word = W[d][n];
+        nkw[word][topic] = nkw[word][topic] + 1;
         ndk[d][topic] = ndk[d][topic] + 1;
         nk[topic] = nk[topic] + 1;
       }
       nd[d] = N;
     }
 
-    this.model = {
+    const model = {
       D: D,
       V: V,
-      K: K,
-      alpha: alpha,
-      beta: beta,
+      K: this.K,
+      alpha: this.alpha,
+      beta: this.beta,
       W: W,
-      iters: 100,
+      iters: this.nIter,
       ndk: ndk,
       nd: nd,
       nkw: nkw,
@@ -49,7 +61,7 @@ export class Estimater {
       perplexity: 0,
       z: z
     };
-    console.log(this.model.nk);
+    return model;
   }
 
   /**
@@ -57,7 +69,7 @@ export class Estimater {
    * @param firstLength
    * @param secoundLenght
    */
-  private createTwoDementionArray(firstLength: number, secoundLenght: number) {
+  private createMatrix(firstLength: number, secoundLenght: number) {
     const result = [];
     for (let i = 0; i < firstLength; i++) {
       const tmp = [];
@@ -73,7 +85,7 @@ export class Estimater {
    * Create one demention array
    * @param length
    */
-  private createOneDementionArray(length: number) {
+  private createVector(length: number) {
     const result = [];
     for (let i = 0; i < length; i++) {
       result.push(0);
@@ -84,56 +96,54 @@ export class Estimater {
   /**
    * Calcurate Perplexity
    */
-  public calcPerplexity(): number {
+  public calcPerplexity(model: Model): number {
     let wordcount = 0;
     let loglik = 0;
 
-    for (let m = 0; m < this.model.D; m++) {
-      //文書分繰り返す
-      for (let n = 0; n < this.model.W[m].length; n++) {
-        //文書の単語数分繰り返す
+    for (let m = 0; m < model.D; m++) {
+      for (let n = 0; n < model.W[m].length; n++) {
         let sum = 0;
-        for (let k = 0; k < this.model.K; k++) {
-          //トピック数K
-          sum += this.model.theta[m][k] * this.model.phi[k][this.model.W[m][n]];
+        for (let k = 0; k < model.K; k++) {
+          sum += model.theta[m][k] * model.phi[k][model.W[m][n]];
         }
         loglik += Math.log(sum);
       }
-      wordcount += this.model.W[m].length;
+      wordcount += model.W[m].length;
     }
     return Math.exp(-loglik / wordcount);
   }
 
-  public fit(): Model {
-    for (let i = 0; i < this.model.iters; i++) {
-      for (let d = 0; d < this.model.D; d++) {
-        for (let n = 0; n < this.model.W[d].length; n++) {
-          const topic = this.model.z[d][n];
-          const w = this.model.W[d][n];
+  public fit(W: number[][]): Model {
+    const model = this.createInitialModel(W);
+    for (let i = 0; i < model.iters; i++) {
+      for (let d = 0; d < model.D; d++) {
+        for (let n = 0; n < model.W[d].length; n++) {
+          const topic = model.z[d][n];
+          const w = model.W[d][n];
           if (topic > 0) {
-            this.model.ndk[d][topic] = this.model.ndk[d][topic] - 1;
-            this.model.nkw[w][topic] = this.model.nkw[w][topic] - 1;
-            this.model.nk[topic] = this.model.nk[topic] - 1;
-            this.model.nd[d] = this.model.nd[d] - 1;
+            model.ndk[d][topic] = model.ndk[d][topic] - 1;
+            model.nkw[w][topic] = model.nkw[w][topic] - 1;
+            model.nk[topic] = model.nk[topic] - 1;
+            model.nd[d] = model.nd[d] - 1;
           }
 
-          const newTopic = this.sampling(d, n);
-          this.model.z[d][n] = newTopic;
+          const newTopic = this.sampling(model, d, n);
+          model.z[d][n] = newTopic;
 
-          this.model.ndk[d][newTopic] = this.model.ndk[d][newTopic] + 1;
-          this.model.nkw[w][newTopic] = this.model.nkw[w][newTopic] + 1;
-          this.model.nk[newTopic] = this.model.nk[newTopic] + 1;
-          this.model.nd[d] = this.model.nd[d] + 1;
+          model.ndk[d][newTopic] = model.ndk[d][newTopic] + 1;
+          model.nkw[w][newTopic] = model.nkw[w][newTopic] + 1;
+          model.nk[newTopic] = model.nk[newTopic] + 1;
+          model.nd[d] = model.nd[d] + 1;
         }
       }
 
-      this.calcTopicDistribution();
-      this.calcWordDistribution();
+      this.calcTopicDistribution(model);
+      this.calcWordDistribution(model);
     }
 
-    this.model.perplexity = this.calcPerplexity();
-    console.log(this.model);
-    return this.model;
+    model.perplexity = this.calcPerplexity(model);
+    console.log(model);
+    return model;
   }
 
   /**
@@ -142,26 +152,25 @@ export class Estimater {
    * @param n word number
    * @returns sampled topic
    */
-  protected sampling(d: number, n: number): number {
-    const w = this.model.W[d][n];
+  protected sampling(model: Model, d: number, n: number): number {
+    const w = model.W[d][n];
 
     // Calculate sampling probability
-    const p = new Array(this.model.K).fill(0);
-    for (let k = 0; k < this.model.K; k++) {
+    const p = this.createVector(model.K);
+    for (let k = 0; k < model.K; k++) {
       p[k] =
-        (this.model.ndk[d][k] + this.model.alpha) *
-        ((this.model.nkw[w][k] + this.model.beta) /
-          (this.model.nk[k] + this.model.beta * this.model.V));
+        (model.ndk[d][k] + model.alpha) *
+        ((model.nkw[w][k] + model.beta) / (model.nk[k] + model.beta * model.V));
     }
 
-    for (let k = 1; k < this.model.K; k++) {
+    for (let k = 1; k < model.K; k++) {
       p[k] = p[k] + p[k - 1];
     }
 
     // Sampling topic
-    const random = Math.random() * p[this.model.K - 1];
+    const random = Math.random() * p[model.K - 1];
     let sampledTopic = 0;
-    for (let i = 0; i < this.model.K; i++) {
+    for (let i = 0; i < model.K; i++) {
       if (p[i] > random) {
         sampledTopic = i;
         break;
@@ -173,12 +182,12 @@ export class Estimater {
   /**
    * Calculate Topic distribution (Theta)
    */
-  protected calcTopicDistribution(): void {
-    for (let d = 0; d < this.model.D; d++) {
-      for (let k = 0; k < this.model.K; k++) {
-        this.model.theta[d][k] =
-          (this.model.ndk[d][k] + this.model.alpha) /
-          (this.model.nd[d] + this.model.alpha * this.model.K);
+  protected calcTopicDistribution(model: Model): void {
+    for (let d = 0; d < model.D; d++) {
+      for (let k = 0; k < model.K; k++) {
+        model.theta[d][k] =
+          (model.ndk[d][k] + model.alpha) /
+          (model.nd[d] + model.alpha * model.K);
       }
     }
   }
@@ -186,12 +195,11 @@ export class Estimater {
   /**
    * Calculate Word distribution (Phi)
    */
-  protected calcWordDistribution(): void {
-    for (let k = 0; k < this.model.K; k++) {
-      for (let w = 0; w < this.model.V; w++) {
-        this.model.phi[k][w] =
-          (this.model.nkw[w][k] + this.model.beta) /
-          (this.model.nk[k] + this.model.beta * this.model.V);
+  protected calcWordDistribution(model: Model): void {
+    for (let k = 0; k < model.K; k++) {
+      for (let w = 0; w < model.V; w++) {
+        model.phi[k][w] =
+          (model.nkw[w][k] + model.beta) / (model.nk[k] + model.beta * model.V);
       }
     }
   }

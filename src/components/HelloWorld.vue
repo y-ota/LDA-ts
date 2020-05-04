@@ -4,7 +4,7 @@
 
 <script lang="ts">
 import { Component, Prop, Vue } from "vue-property-decorator";
-import { Estimater } from "../topicmodeling/estimater";
+import { LDA } from "../topicmodeling/estimater";
 
 @Component
 export default class HelloWorld extends Vue {
@@ -17,7 +17,7 @@ export default class HelloWorld extends Vue {
       [0, 0, 0, 0, 0, 1],
       [1, 0, 0, 0, 0, 1]
     ];
-    new Estimater(X).fit();
+    new LDA().fit(X);
   }
 }
 </script>
