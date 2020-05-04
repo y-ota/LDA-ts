@@ -77,6 +77,11 @@ console.log(model);
 
 #### Retruns
 |  Property  |  Explanation  |
+| ---- | ---- | 
+|  `Model`  |  Estimeted model  |
+
+### `Model`
+|  Property  |  Explanation  |
 | ---- | ---- |
 |  `W`  |  All documentations  |
 |  `D`  |  Number of documentations  |
