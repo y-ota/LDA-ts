@@ -8,7 +8,7 @@ You can run on your browser with serverless.
 # Install
 
 ```
-npm install LDA-ts
+npm install @y-ota/lda-ts@1.0.0-alpha
 ```
 
 # Usage
