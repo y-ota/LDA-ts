@@ -17,8 +17,12 @@ export class LDA {
     private alpha = 0.5,
     private beta = 0.1,
     private nIter = 10
-  ) { }
+  ) {}
 
+  /**
+   * Create initial model
+   * @param W All documents
+   */
   private createInitialModel(W: number[][]): Model {
     // Initialize Model
     const D = W.length;
@@ -94,25 +98,9 @@ export class LDA {
   }
 
   /**
-   * Calcurate Perplexity
+   * Fit
+   * @param W All documents
    */
-  public calcPerplexity(model: Model): number {
-    let wordcount = 0;
-    let loglik = 0;
-
-    for (let m = 0; m < model.D; m++) {
-      for (let n = 0; n < model.W[m].length; n++) {
-        let sum = 0;
-        for (let k = 0; k < model.K; k++) {
-          sum += model.theta[m][k] * model.phi[k][model.W[m][n]];
-        }
-        loglik += Math.log(sum);
-      }
-      wordcount += model.W[m].length;
-    }
-    return Math.exp(-loglik / wordcount);
-  }
-
   public fit(W: number[][]): Model {
     const model = this.createInitialModel(W);
     for (let i = 0; i < model.iters; i++) {
@@ -140,17 +128,14 @@ export class LDA {
       this.calcTopicDistribution(model);
       this.calcWordDistribution(model);
     }
-
-    model.perplexity = this.calcPerplexity(model);
-    console.log(model);
     return model;
   }
 
   /**
    * Execute Sampling
+   * @param model model
    * @param d document number
    * @param n word number
-   * @returns sampled topic
    */
   protected sampling(model: Model, d: number, n: number): number {
     const w = model.W[d][n];
@@ -181,6 +166,7 @@ export class LDA {
 
   /**
    * Calculate Topic distribution (Theta)
+   * @param model model
    */
   protected calcTopicDistribution(model: Model): void {
     for (let d = 0; d < model.D; d++) {
@@ -194,6 +180,7 @@ export class LDA {
 
   /**
    * Calculate Word distribution (Phi)
+   * @param model model
    */
   protected calcWordDistribution(model: Model): void {
     for (let k = 0; k < model.K; k++) {
