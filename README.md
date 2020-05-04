@@ -66,7 +66,7 @@ console.log(model);
 |  `beta`  |  Hyper parameteter Beta  | `0.1` |
 |  `nIter`  |  Number of sampling iterations  | `10` |
 
-### fit
+### fit method
 
 #### Input
 |  Property  |  Explain  |
