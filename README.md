@@ -100,4 +100,4 @@ console.log(model);
 
   
 # License
-© 2020 Yusuke Ota, LDA-ts released under the [MIT Lincense](https://github.com/y-ota/review-lda-ts/blob/master/README.md)
+© 2020 Yusuke Ota, LDA-ts released under the [MIT Lincense](https://github.com/y-ota/LDA-ts/blob/master/LICENSE)
