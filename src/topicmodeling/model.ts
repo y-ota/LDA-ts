@@ -48,12 +48,12 @@ export interface Model {
   phi: number[][];
 
   /**
-   * Assigned topics for word
+   * Assigned topics for word (D * V)
    */
   z: number[][];
 
   /**
-   * Number of words assinged to topic (K * W)
+   * Number of words assinged to topic (V * K)
    */
   nkw: number[][];
 
@@ -64,15 +64,16 @@ export interface Model {
 
   /**
    * Number of topics in all documents (1 * K)
-   */  
-  nk: number[]; 
+   */
+  nk: number[];
 
+  /**
+   * Number of worts in document (1 * D)
+   */
+  nd: number[];
 
-  ndsum: number[]; //ndsum[i]: total number of words in document i, size M
-
-  // temp variables for sampling
-  p: number[];
-
-  //
+  /**
+   * perplexity
+   */
   perplexity: number;
 }

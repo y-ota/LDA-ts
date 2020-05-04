@@ -12,12 +12,12 @@ export default class HelloWorld extends Vue {
 
   private mounted() {
     const X = [
-      [0, 1, 0],
-      [0, 1, 1],
-      [0, 0, 0],
-      [1, 0, 0]
+      [0, 1, 0, 0, 0, 1],
+      [0, 1, 1, 0, 0, 1],
+      [0, 0, 0, 0, 0, 1],
+      [1, 0, 0, 0, 0, 1]
     ];
-    new Estimater(X).estimate();
+    new Estimater(X).fit();
   }
 }
 </script>
