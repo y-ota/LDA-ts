@@ -1,29 +1,35 @@
-# topicmodeling-ts
+# LDA-ts
+A TypeScriot implimentation of Topic modeing(LDA:Latent Dirichlet Allocation).
 
-## Project setup
-```
-npm install
-```
+You can run on your browser with serverless.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+# Install
 
-### Compiles and minifies for production
 ```
-npm run build
+npm install LDA-ts
 ```
 
-### Run your unit tests
+# Usage
 ```
-npm run test:unit
-```
-
-### Lints and fixes files
-```
-npm run lint
+const X = [[1,0,0,1,0,1],[,1,1,1,0,1],[1,1,1,1,0,1],...] #ex: Bag of words
+const lda = new LDA();
+const model = lda.fit(X);
+console.log(model);
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+# API
+## LDA#constructor
+|  Parameter  |  Explain  | Default value |
+| ---- | ---- |
+|  `K`  |  Number of topics  | `10` |
+|  `alpha`  |  Hyper parameteter Alpha  | `0.5` |
+|  `beta`  |  Hyper parameteter Beta  | `0.1` |
+|  `nIter`  |  Number of sampling iterations  | `10` |
+
+### LDA#fit
+|  Parameter  |  Explain  | Default value |
+| ---- | ---- |
+|  `X`  |  All documentations (ex: Bang of Words)  | `null` |
+
+# License
+© 2020 Yusuke Ota [MIT Lincense]()
