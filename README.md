@@ -10,8 +10,8 @@ npm install LDA-ts
 ```
 
 # Usage
-```
-const X = [[1,0,0,1,0,1],[,1,1,1,0,1],[1,1,1,1,0,1],...] #ex: Bag of words
+``` typescript
+const X = [[1,0,0,1,0,1],[,1,1,1,0,1],[1,1,1,1,0,1],...] // ex: Bag of words
 const lda = new LDA();
 const model = lda.fit(X);
 console.log(model);
@@ -19,6 +19,7 @@ console.log(model);
 
 # API
 ## LDA#constructor
+
 |  Parameter  |  Explain  | Default value |
 | ---- | ---- |
 |  `K`  |  Number of topics  | `10` |
@@ -27,6 +28,7 @@ console.log(model);
 |  `nIter`  |  Number of sampling iterations  | `10` |
 
 ### LDA#fit
+
 |  Parameter  |  Explain  | Default value |
 | ---- | ---- |
 |  `X`  |  All documentations (ex: Bang of Words)  | `null` |
