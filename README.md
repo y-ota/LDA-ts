@@ -78,7 +78,7 @@ console.log(model);
 #### Retruns
 |  Property  |  Explanation  |
 | ---- | ---- | 
-|  `Model`  |  Estimeted model  |
+|  `Model`  |  Estimated model  |
 
 ### `Model`
 |  Property  |  Explanation  |
