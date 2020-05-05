@@ -5,7 +5,7 @@ export interface Model {
   /**
    * All documentations (ex: Bang of Words)
    */
-  W: number[][];
+  X: number[][];
 
   /**
    * Number of documentations

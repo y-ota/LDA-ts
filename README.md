@@ -36,7 +36,7 @@ Output of `console.log(model);`
      K: 10,
      alpha: 0.5,
      beta: 0.1,
-    W: [ [ 1, 0, 1 ], [ 1, 0, 1 ], [ 1, 0, 1 ], [ 1, 0, 1 ] ],
+     X: [ [ 1, 0, 1 ], [ 1, 0, 1 ], [ 1, 0, 1 ], [ 1, 0, 1 ] ],
      iters: 10,
     ...
      phi: [
@@ -86,9 +86,9 @@ Output of `console.log(model);`
 #### Arguments
 |  Property  |  Explanation  |
 | ---- | ---- | 
-|  `X`  |  All documentations (ex: Bang of Words)  |
+|  `X`  |  All documents (ex: Bang of Words)  |
 
-#### Retruns
+#### Returns
 |  Property  |  Explanation  |
 | ---- | ---- | 
 |  `Model`  |  Estimated model  |
@@ -96,8 +96,8 @@ Output of `console.log(model);`
 ## `Model`
 |  Property  |  Explanation  |
 | ---- | ---- |
-|  `W`  |  All documentations  |
-|  `D`  |  Number of documentations  |
+|  `X`  |  All documents  |
+|  `D`  |  Number of documents  |
 |  `V`  |  Number of vocabulary  |
 |  `K`  |  Number of topics  |
 |  `alpha`  |  Hyper parameter Alpha  |

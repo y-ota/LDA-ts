@@ -10,14 +10,14 @@ export class Utils {
     let loglik = 0;
 
     for (let m = 0; m < model.D; m++) {
-      for (let n = 0; n < model.W[m].length; n++) {
+      for (let n = 0; n < model.X[m].length; n++) {
         let sum = 0;
         for (let k = 0; k < model.K; k++) {
-          sum += model.theta[m][k] * model.phi[k][model.W[m][n]];
+          sum += model.theta[m][k] * model.phi[k][model.X[m][n]];
         }
         loglik += Math.log(sum);
       }
-      wordcount += model.W[m].length;
+      wordcount += model.X[m].length;
     }
     return Math.exp(-loglik / wordcount);
   }

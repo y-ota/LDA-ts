@@ -13,20 +13,20 @@ export class LDA {
    * @param nIter Number of sampling iterations
    */
   constructor(
-    private K = 10,
-    private alpha = 0.5,
-    private beta = 0.1,
-    private nIter = 10
-  ) {}
+    protected K = 10,
+    protected alpha = 0.5,
+    protected beta = 0.1,
+    protected nIter = 10
+  ) { }
 
   /**
    * Create initial model
-   * @param W All documents
+   * @param X All documents
    */
-  private createInitialModel(W: number[][]): Model {
+  protected createInitialModel(X: number[][]): Model {
     // Initialize Model
-    const D = W.length;
-    const V = W[0].length;
+    const D = X.length;
+    const V = X[0].length;
     const nkw: number[][] = this.createMatrix(V, this.K);
     const ndk: number[][] = this.createMatrix(D, this.K);
     const nk = this.createVector(this.K);
@@ -37,10 +37,10 @@ export class LDA {
 
     // Set default values
     for (let d = 0; d < D; d++) {
-      const N = W[d].length;
+      const N = X[d].length;
       for (let n = 0; n < N; n++) {
         const topic = Math.floor(Math.random() * this.K);
-        const word = W[d][n];
+        const word = X[d][n];
         nkw[word][topic] = nkw[word][topic] + 1;
         ndk[d][topic] = ndk[d][topic] + 1;
         nk[topic] = nk[topic] + 1;
@@ -54,7 +54,7 @@ export class LDA {
       K: this.K,
       alpha: this.alpha,
       beta: this.beta,
-      W: W,
+      X: X,
       nIter: this.nIter,
       ndk: ndk,
       nd: nd,
@@ -68,11 +68,11 @@ export class LDA {
   }
 
   /**
-   * Create two demention array
+   * Create matrix
    * @param firstLength
    * @param secoundLenght
    */
-  private createMatrix(firstLength: number, secoundLenght: number) {
+  protected createMatrix(firstLength: number, secoundLenght: number) {
     const result = [];
     for (let i = 0; i < firstLength; i++) {
       const tmp = [];
@@ -85,10 +85,10 @@ export class LDA {
   }
 
   /**
-   * Create one demention array
+   * Create vector
    * @param length
    */
-  private createVector(length: number) {
+  protected createVector(length: number) {
     const result = [];
     for (let i = 0; i < length; i++) {
       result.push(0);
@@ -98,15 +98,15 @@ export class LDA {
 
   /**
    * Fit
-   * @param W All documents
+   * @param X All documents
    */
-  public fit(W: number[][]): Model {
-    const model = this.createInitialModel(W);
+  public fit(X: number[][]): Model {
+    const model = this.createInitialModel(X);
     for (let i = 0; i < model.nIter; i++) {
       for (let d = 0; d < model.D; d++) {
-        for (let n = 0; n < model.W[d].length; n++) {
+        for (let n = 0; n < model.X[d].length; n++) {
           const topic = model.z[d][n];
-          const w = model.W[d][n];
+          const w = model.X[d][n];
           if (topic > 0) {
             model.ndk[d][topic] = model.ndk[d][topic] - 1;
             model.nkw[w][topic] = model.nkw[w][topic] - 1;
@@ -123,10 +123,10 @@ export class LDA {
           model.nd[d] = model.nd[d] + 1;
         }
       }
-
-      this.calcTopicDistribution(model);
-      this.calcWordDistribution(model);
     }
+    this.calcTopicDistribution(model);
+    this.calcWordDistribution(model);
+
     return model;
   }
 
@@ -137,7 +137,7 @@ export class LDA {
    * @param n word number
    */
   protected sampling(model: Model, d: number, n: number): number {
-    const w = model.W[d][n];
+    const w = model.X[d][n];
 
     // Calculate sampling probability
     const p = this.createVector(model.K);
