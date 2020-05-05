@@ -1,4 +1,4 @@
-import { LDA } from "@/topicmodeling/lda";
+import { LDA } from "src/topicmodeling/lda";
 
 describe("LDA", () => {
   it("fit", () => {

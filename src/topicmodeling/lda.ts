@@ -17,7 +17,7 @@ export class LDA {
     protected alpha = 0.5,
     protected beta = 0.1,
     protected nIter = 10
-  ) { }
+  ) {}
 
   /**
    * Create initial model
@@ -72,7 +72,10 @@ export class LDA {
    * @param firstLength
    * @param secoundLenght
    */
-  protected createMatrix(firstLength: number, secoundLenght: number) {
+  protected createMatrix(
+    firstLength: number,
+    secoundLenght: number
+  ): number[][] {
     const result = [];
     for (let i = 0; i < firstLength; i++) {
       const tmp = [];
@@ -88,7 +91,7 @@ export class LDA {
    * Create vector
    * @param length
    */
-  protected createVector(length: number) {
+  protected createVector(length: number): number[] {
     const result = [];
     for (let i = 0; i < length; i++) {
       result.push(0);
