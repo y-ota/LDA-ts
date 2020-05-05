@@ -1,6 +1,6 @@
 # LDA-ts
 
-LDA-ts is a TypeScript implementation of Topic modeing (LDA: Latent Dirichlet Allocation) using collapsed gibbs sampling.
+LDA-ts is a TypeScript implementation of Topic modeling (LDA: Latent Dirichlet Allocation) using collapsed gibbs sampling.
 You can run on your browser with serverless.
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
