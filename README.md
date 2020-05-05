@@ -10,6 +10,11 @@ You can run on your browser with serverless.
 ```
 npm install @y-ota/lda-ts
 ```
+or
+
+```
+npm install git+https://github.com/y-ota/LDA-ts.git
+```
 
 
 # Usage
