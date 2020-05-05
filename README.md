@@ -8,16 +8,27 @@ You can run on your browser with serverless.
 # Install
 
 ```
-npm install LDA-ts
+npm install @y-ota/lda-ts@1.0.0-alpha
+```
+
+or 
+
+```
+git clone https://github.com/y-ota/LDA-ts.git
 ```
 
 # Usage
 ``` typescript
+import { LDA } from "@/topicmodeling/lda";
+
 const X = [[1,0,0,1,0,1],[,1,1,1,0,1],[1,1,1,1,0,1],...] // ex: Bag of words
 const lda = new LDA();
 const model = lda.fit(X);
 console.log(model);
 ```
+
+Output of `console.log(model);`
+
 ```
  {
      D: 4,
@@ -51,6 +62,8 @@ console.log(model);
          0.4473684210526316,
          0.02631578947368421,
          0.02631578947368421,
+...
+         
 ```
 
 
@@ -100,4 +113,4 @@ console.log(model);
 
   
 # License
-© 2020 Yusuke Ota, LDA-ts released under the [MIT Lincense](https://github.com/y-ota/review-lda-ts/blob/master/README.md)
+© 2020 Yusuke Ota, LDA-ts released under the [MIT Lincense](https://github.com/y-ota/LDA-ts/blob/master/LICENSE)
