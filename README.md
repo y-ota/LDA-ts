@@ -29,7 +29,7 @@ console.log(model);
 
 Output of `console.log(model);`
 
-```
+``` json
  {
      D: 4,
      V: 3,
