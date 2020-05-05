@@ -1,7 +1,6 @@
 {
-  "name": "@y-ota/LDA-ts",
+  "name": "@y-ota/lda-ts",
   "version": "1.0.0-alpha",
-  "private": true,
   "repository": "https://github.com/y-ota/LDA-ts",
   "publishConfig": {
     "registry":"https://npm.pkg.github.com/"
