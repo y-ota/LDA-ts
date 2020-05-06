@@ -4,7 +4,7 @@ LDA-ts is a TypeScript implementation of Topic modeling (LDA: Latent Dirichlet A
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-# Install
+# Installation
 ### From [GitHub Packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages)
 
 ```
@@ -68,7 +68,7 @@ Output of `console.log(model);`
 ```
 
 
-# API
+# API documentation
 ## `LDA`
 
 ### `constructor`
