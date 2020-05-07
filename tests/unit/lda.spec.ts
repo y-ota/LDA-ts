@@ -12,8 +12,8 @@ describe("LDA", () => {
     const model = lda.fit(X);
     console.log(model);
     // Theta
-    expect(model.theta[0].reduce((p, c) => p + c)).toBe(1);
+    expect(model.theta[0].reduce((p, c) => p + c)).toBeCloseTo(1);
     // Phi
-    expect(model.phi[0].reduce((p, c) => p + c)).toBe(1);
+    expect(model.phi[0].reduce((p, c) => p + c)).toBeCloseTo(1);
   });
 });
