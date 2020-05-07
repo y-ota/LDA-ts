@@ -5,7 +5,7 @@ LDA-ts is a TypeScript implementation of Topic modeling (LDA: Latent Dirichlet A
 [![Build Status](https://travis-ci.org/y-ota/LDA-ts.svg?branch=master)](https://travis-ci.org/y-ota/LDA-ts)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-# Installation
+## Installation
 ### From [GitHub Packages](https://help.github.com/en/packages/using-github-packages-with-your-projects-ecosystem/configuring-npm-for-use-with-github-packages)
 
 ```
@@ -19,7 +19,7 @@ npm install git+https://github.com/y-ota/LDA-ts.git
 ```
 
 
-# Usage
+## Usage
 ``` typescript
 import ldats from "@y-ota/lda-ts";
 
@@ -69,7 +69,7 @@ Output of `console.log(model);`
 ```
 
 
-# API documentation
+## API documentation
 ## `LDA`
 
 ### `constructor`
@@ -114,5 +114,5 @@ Output of `console.log(model);`
 |  `nd`  | Number of worts in document (1 * D)  |
 
   
-# License
+## License
 © 2020 Yusuke Ota, LDA-ts released under the [MIT Lincense](https://github.com/y-ota/LDA-ts/blob/master/LICENSE)
